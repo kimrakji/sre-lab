@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sre-lab
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sre-lab
+  template:
+    metadata:
+      labels:
+        app: sre-lab
+    spec:
+      containers:
+        - name: sre-lab
+          image: sre-lab:0.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
